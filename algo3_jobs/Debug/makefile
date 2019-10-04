@@ -22,19 +22,19 @@ endif
 # Add inputs and outputs from these tool invocations to the build variables 
 
 # All Target
-all: algo2_jobs
+all: algo3_jobs
 
 # Tool invocations
-algo2_jobs: $(OBJS) $(USER_OBJS)
+algo3_jobs: $(OBJS) $(USER_OBJS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: Cross GCC Linker'
-	gcc  -o "algo2_jobs" $(OBJS) $(USER_OBJS) $(LIBS)
+	gcc  -o "algo3_jobs" $(OBJS) $(USER_OBJS) $(LIBS)
 	@echo 'Finished building target: $@'
 	@echo ' '
 
 # Other Targets
 clean:
-	-$(RM) $(EXECUTABLES)$(OBJS)$(C_DEPS) algo2_jobs
+	-$(RM) $(EXECUTABLES)$(OBJS)$(C_DEPS) algo3_jobs
 	-@echo ' '
 
 .PHONY: all clean dependents

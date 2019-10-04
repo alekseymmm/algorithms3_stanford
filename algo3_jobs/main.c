@@ -9,6 +9,8 @@
 #include <stdio.h>
 #include <memory.h>
 
+#define PA 2 // 2
+
 struct job {
 	int weight;
 	int len;
@@ -18,10 +20,13 @@ int compare_jobs(const void *a, const void *b)
 {
 	const struct job *job1 = a;
 	const struct job *job2 = b;
-//	int score1 = job1->weight - job1->len;
-//	int score2 = job2->weight - job2->len;
+#if PA == 1
+	int score1 = job1->weight - job1->len;
+	int score2 = job2->weight - job2->len;
+#else // PA ==2
 	double score1 = (double)job1->weight / (double)job1->len;
 	double score2 = (double)job2->weight / (double)job2->len;
+#endif
 
 	if (score1 == score2) {
 		if (job1->weight > job2->weight)
@@ -59,7 +64,7 @@ int main()
 	struct job *jobs;
 	unsigned long long res;
 
-	fd = fopen("jobs.txt", "r");
+	fd = fopen("../jobs.txt", "r");
 	if (!fd) {
 		printf("error open file\n");
 		return -1;
